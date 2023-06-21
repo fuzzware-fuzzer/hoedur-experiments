@@ -1,0 +1,13 @@
+pub fn main(api) {
+    api.on_interrupt(None, Some(3), |pc, _| trace::basic_block(pc, None));
+    api.on_interrupt(None, Some(4), |pc, _| trace::basic_block(pc, None));
+    api.on_interrupt(None, Some(5), |pc, _| trace::basic_block(pc, None));
+    api.on_interrupt(None, Some(6), |pc, _| trace::basic_block(pc, None));
+    api.on_rom_write(None, None, |pc, _, _, _| trace::basic_block(pc, None));
+
+    api.on_basic_block(None, |pc| log::info!("basic block {:08x}", pc));
+    api.on_ram_read(None, None, |pc, address, size, value| log::info!("RAM read from {:08x}: value {:08x}", address, value));
+    api.on_ram_write(None, None, |pc, address, size, value| log::info!("RAM write to {:08x} with value {:08x}", address, value));
+    api.on_mmio_read(None, None, |pc, address, size, value| log::info!("MMIO read from {:08x}: value {:08x}", address, value));
+    api.on_mmio_write(None, None, |pc, address, size, value| log::info!("MMIO write to {:08x} with value {:08x}", address, value));
+}

@@ -1,0 +1,46 @@
+board:
+  init_nsvtor: 0x8000000
+  systick: false
+
+interrupt:
+  mode: disabled
+  trigger:
+    on-infinite-sleep: true
+    interval: 1000
+
+memory_maps:
+  - name: mmio
+    address: 0x40000000
+    size: 0x20000000
+    type: mmio
+  - name: ITM_DWT_BPU
+    address: 0xe0000000
+    size: 0x3000
+    type: mmio
+  - name: CTI
+    address: 0xe0042000
+    size: 0x1000
+    type: mmio
+  - name: ram
+    address: 0x20000000
+    size: 0x60000
+    type: ram
+  - name: text
+    address: 0x8000000
+    size: 0x15000
+    file:
+      path: XML_Parser.bin
+      length: 0x15000
+    type: rom
+  - name: rodata
+    address: 0x8015000
+    size: 0x10000
+    permission:
+      executable: false
+    file:
+      path: XML_Parser.bin
+      seek: 0x15000
+    type: rom
+
+symbols:
+  - XML_Parser.elf

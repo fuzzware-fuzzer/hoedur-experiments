@@ -1,0 +1,16 @@
+oob_bounds_check_remove_crc16_call:
+  description: "remove the call to crc16 and replace it with a zero result"
+  address: 0x8025E
+  binfile_offset: 0x25E
+  patch_contents: "80ea0000"
+oob_bounds_check_jump_to_code_cave:
+  description: "insert branch into code cave (previously crc16 function)"
+  address: 0x8040C
+  binfile_offset: 0x40C
+  # jump 8040C -> 80218
+  patch_contents: "04e7"
+oob_bounds_check_code_cave_contents:
+  description: "Use code cave to patch the user-provided input size into bounds"
+  address: 0x80218
+  binfile_offset: 0x218
+  patch_contents: "f8b5c66c0a4907a209a5aa4209da17788e4205d053783944194402f10202f4e7c772e8e026000200100008c002001200c8080720"

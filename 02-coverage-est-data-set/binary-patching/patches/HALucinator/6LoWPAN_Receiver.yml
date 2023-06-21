@@ -1,0 +1,24 @@
+reassembly_frag_oob_code_cave_ret:
+  description: "Patch delay_cycles_us function to plain return"
+  address: 0x154
+  binfile_offset: 0x154
+  patch_contents: "7047"
+
+reassembly_frag_oob_code_cave_contents:
+  description: "Repeat overwritten instructions (LSLS R0, R3, #3; ADD R0, R10;) and perform checks, then jump back"
+  address: 0x156
+  binfile_offset: 0x156
+  # jumps: 0x168 -> 0x4806, 0x16C -> 0x4812
+  patch_contents: "D8005044002a06db00eb0203b3f5806f01dc04f04dbb04f051bb"
+
+reassembly_frag_oob_trampoline:
+  description: "Patch jump into code cave (jump from 0x4802 to 0x156)"
+  address: 0x4802
+  binfile_offset: 0x4802
+  patch_contents: "fbf7a8bc"
+
+system_clock_source_get_hz_recursion:
+  description: "Remove the recursion within SYSTEM_CLOCK_SOURCE_DFLL case of system_clock_source_get_hz."
+  address: 0x1C4A
+  binfile_offset: 0x1C4A
+  patch_contents: "00BF"

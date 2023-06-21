@@ -1,0 +1,44 @@
+From 5fd2a30b9006ac8476ff6c1dd90d65c69c1383cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Simon=20W=C3=B6rner?= <git@simon-woerner.de>
+Date: Wed, 14 Sep 2022 14:13:44 +0000
+Subject: [PATCH] simple SPI read
+
+---
+ drivers/spi/spi_ll_stm32.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/spi/spi_ll_stm32.c b/drivers/spi/spi_ll_stm32.c
+index 651f18d235..cc6abd750a 100644
+--- a/drivers/spi/spi_ll_stm32.c
++++ b/drivers/spi/spi_ll_stm32.c
+@@ -599,9 +599,26 @@ static int transceive(const struct device *dev,
+ 	SPI_TypeDef *spi = cfg->spi;
+ 	int ret;
+ 
+-	if (!tx_bufs && !rx_bufs) {
++	if (!rx_bufs) {
+ 		return 0;
+ 	}
++	
++	for (int i = 0; i < rx_bufs->count; ++i) {
++		struct spi_buf *rx_buf = &rx_bufs->buffers[i];
++
++		// Need to skip bytes if rx_buf is null, ignoring
++		if (!rx_buf || !rx_buf->buf) {
++			continue;
++		}
++
++		// Read full buffer length
++		for (int j = 0; j < rx_buf->len; ++j) {
++			((uint8_t *)rx_buf->buf)[j] = *((volatile uint8_t *)&spi->DR);
++		}
++	}
++
++	return 0;
++
+ 
+ #ifndef CONFIG_SPI_STM32_INTERRUPT
+ 	if (asynchronous) {
+-- 
+2.25.1
+

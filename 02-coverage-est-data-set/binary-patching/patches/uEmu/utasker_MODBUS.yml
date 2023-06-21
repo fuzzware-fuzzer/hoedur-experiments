@@ -1,0 +1,48 @@
+ethernet_init_ptrRxBd_check:
+  description: "Check ethernet global variable ptrRxBd to be non-NULL before use in fnEthernetEvent"
+  address: 0x800C2EE
+  binfile_offset: 0x26e
+  patch_contents: "00bfdff87c2b1068002815d0"
+
+flash_api_nop_write_1:
+  description: "NOP write to user-chosen pointer"
+  address: 0x800FE60
+  binfile_offset: 0x3de0
+  patch_contents: "00bf"
+flash_api_nop_write_2:
+  description: "NOP write to user-chosen pointer"
+  address: 0x800FE66
+  binfile_offset: 0x3de6
+  patch_contents: "00bf"
+flash_api_nop_write_3:
+  description: "NOP write to user-chosen pointer"
+  address: 0x800FE94
+  binfile_offset: 0x3e14
+  patch_contents: "00bf"
+flash_api_nop_fnWriteBytesFlash_call:
+  description: "NOP call to fnWriteBytesFlash with user-chosen pointer"
+  address: 0x800FE52
+  binfile_offset: 0x3dd2
+  patch_contents: "4FF00000"
+
+fnSimulateEthernetIn_initcheck_reroute:
+  description: "Re-route jump to code cave to perform initialization check"
+  address: 0x800C77C
+  binfile_offset: 0x6fc
+  patch_contents: "09F068BC"
+fnSimulateEthernetIn_initcheck_codecave:
+  description: "Code cave to check ethernet global variable ptrTxBd to be non-NULL before use in fnSimulateEthernetIn"
+  address: 0x08016049
+  binfile_offset: 0x9fc9
+  patch_contents: "00000000000000044A1268002A00D17047F8B50546F6F78FBB00BFC80A0020"
+
+fnMODBUS_SerialHandle_OOB_index_check:
+  description: "Perform the index check to pin it to 0 (instead of the original <=10)"
+  address: 0x80113F2
+  binfile_offset: 0x5372
+  patch_contents: "01"
+fnMODBUS_SerialHandle_OOB_index_calc:
+  description: "Perform the index calculation by no longer subtracting from 10, but from 0 (which essentially removes the instruction altogether"
+  address: 0x80113F8
+  binfile_offset: 0x5378
+  patch_contents: "00"

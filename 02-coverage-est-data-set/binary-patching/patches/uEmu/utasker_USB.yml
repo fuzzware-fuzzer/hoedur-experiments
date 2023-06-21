@@ -1,0 +1,47 @@
+usLength_assignment_1:
+  description: "Reduce maximum buffer size for size assignment 1"
+  address: 0x0800DAF8
+  binfile_offset: 0x1a78
+  patch_contents: "03"
+usLength_assignment_2:
+  description: "Reduce maximum buffer size for size assignment 2"
+  address: 0x0800DBC8
+  binfile_offset: 0x1b48
+  patch_contents: "03"
+endpoint_index_assignment:
+    description: "Restrict the maximum USB reference index to 0-1 (as only 2 endpoints are allocated, not the maximum 16 supported by the driver logic)"
+    address: 0x800dabe
+    binfile_offset: 0x1a3e
+    patch_contents: "01"
+uart_settings_interface_index:
+    description: "Restrict the maximum index to 0 by removing all increments over uart_setting"
+    address: 0x8011C28
+    binfile_offset: 0x5ba8
+    patch_contents: "4FF0000048445B4200BF5A46314600BF"
+
+uart_fnSetNewSerialMode_race_call_1:
+    description: "Remove mode 4 call to fnSetNewSerialMode"
+    address: 0x8011990
+    binfile_offset: 0x5910
+    patch_contents: "00bf00bf"
+uart_fnSetNewSerialMode_race_call_2:
+    description: "Remove mode 4 call to fnSetNewSerialMode"
+    address: 0x8012E9A
+    binfile_offset: 0x6e1a
+    patch_contents: "00bf00bf"
+uart_fnSetNewSerialMode_race_call_3:
+    description: "Remove mode 4 call to fnSetNewSerialMode"
+    address: 0x80137C8
+    binfile_offset: 0x7748
+    patch_contents: "00bf00bf"
+
+fnMODBUS_SerialHandle_OOB_index_check:
+  description: "Perform the index check to pin it to 0 (instead of the original <=10)"
+  address: 0x80104DE
+  binfile_offset: 0x445e
+  patch_contents: "01"
+fnMODBUS_SerialHandle_OOB_index_calc:
+  description: "Perform the index calculation by no longer subtracting from 10, but from 0 (which essentially removes the instruction altogether"
+  address: 0x80104E4
+  binfile_offset: 0x4464
+  patch_contents: "00"

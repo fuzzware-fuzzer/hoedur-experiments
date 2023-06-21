@@ -1,0 +1,133 @@
+expired_pointer_use_ret_val_1:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C5B5
+  binfile_offset: 0xC5B5
+  patch_contents: "20"
+expired_pointer_use_ret_val_2:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C5C3
+  binfile_offset: 0xC5C3
+  patch_contents: "20"
+expired_pointer_use_ret_val_3:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C65B
+  binfile_offset: 0xC65B
+  patch_contents: "20"
+expired_pointer_use_ret_val_4:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C667
+  binfile_offset: 0xC667
+  patch_contents: "20"
+expired_pointer_use_ret_val_5:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C775
+  binfile_offset: 0xC775
+  patch_contents: "20"
+expired_pointer_use_ret_val_6:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C779
+  binfile_offset: 0xC779
+  patch_contents: "20"
+expired_pointer_use_ret_val_7:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C885
+  binfile_offset: 0xC885
+  patch_contents: "20"
+expired_pointer_use_ret_val_8:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C911
+  binfile_offset: 0xC911
+  patch_contents: "20"
+expired_pointer_use_ret_val_9:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C915
+  binfile_offset: 0xC915
+  patch_contents: "20"
+expired_pointer_use_ret_val_10:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C9A5
+  binfile_offset: 0xC9A5
+  patch_contents: "20"
+
+expired_pointer_use_modified_epilogue:
+  description: "add an override of the destination buffer stored in the I2C handle pBuffPtr field"
+  address: 0x800C9A8
+  binfile_offset: 0xC9A8
+  patch_contents: "0220fb6858622837bd4680bd"
+
+constrain_draw_index:
+  description: "Mask the state value which will be passed as y1 index with 0xf to ensure the correct range"
+  address: 0x08000F0C
+  binfile_offset: 0xF0C
+  patch_contents: "03f00f03"
+
+I2C_ITError_remove_write_1:
+  description: "Remove the unchecked write-and-increment-pointer which is performed in I2C_ITError isr."
+  address: 0x0800B010
+  binfile_offset: 0xB010
+  patch_contents: "00bf00bf00bf00bf00bf00bf00bf00bf00bf00bf"
+I2C_ITError_remove_write_2:
+  description: "Remove the unchecked write-and-increment-pointer which is performed in I2C_ITError isr."
+  address: 0x0800B074
+  binfile_offset: 0xB074
+  patch_contents: "00bf00bf00bf00bf00bf00bf00bf00bf00bf00bf"
+I2C_ITError_remove_write_3:
+  description: "Remove the unchecked write-and-increment-pointer which is performed in I2C_ITError isr."
+  address: 0x0800B0AE
+  binfile_offset: 0xB0AE
+  patch_contents: "00bf00bf00bf00bf00bf00bf00bf00bf00bf00bf"
+expired_pointer_2_use_ret_val_1:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C559
+  binfile_offset: 0xC559
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_2:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C555
+  binfile_offset: 0xC555
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_3:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C529
+  binfile_offset: 0xC529
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_4:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C525
+  binfile_offset: 0xC525
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_5:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C483
+  binfile_offset: 0xC483
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_6:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C47f
+  binfile_offset: 0xC47f
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_7:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C453
+  binfile_offset: 0xC453
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_8:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C447
+  binfile_offset: 0xC447
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_9:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C3AF
+  binfile_offset: 0xC3AF
+  patch_contents: "20"
+expired_pointer_2_use_ret_val_10:
+  description: "directly assign r0 value instead of r3"
+  address: 0x0800C3A1
+  binfile_offset: 0xC3A1
+  patch_contents: "20"
+expired_pointer_2_use_modified_epilogue:
+  description: "add an override of the destination buffer stored in the I2C handle pBuffPtr field"
+  address: 0x0800C55A
+  binfile_offset: 0xC55A
+  patch_contents: "FB6858621837BD4680BD"

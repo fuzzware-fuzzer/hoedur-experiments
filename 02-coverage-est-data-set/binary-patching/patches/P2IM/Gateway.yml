@@ -1,0 +1,20 @@
+expired_variable:
+  description: "Remove use of expired variable"
+  address: 0x08006e82
+  binfile_offset: 0x6e82
+  patch_contents: "00bf00bf"
+oob_bounds_check:
+  description: "Free some space and add bounds check"
+  address: 0x08002fc6
+  binfile_offset: 0x2fc6
+  patch_contents: "3c2902da423140f8212070472de9f0410d461746"
+oob_call_fix1:
+  description: "Fix first function call"
+  address: 0x0800302a
+  binfile_offset: 0x302a
+  patch_contents: "d3"
+oob_call_fix2:
+  description: "Fix second function call"
+  address: 0x0800303e
+  binfile_offset: 0x303e
+  patch_contents: "c9"

@@ -1,0 +1,12 @@
+Fuzzware/contiki-ng/CVE-2020-12140 25.01
+Fuzzware/contiki-ng/CVE-2020-12141 37.22
+Fuzzware/zephyr-os/CVE-2020-10064  127.48
+Fuzzware/zephyr-os/CVE-2020-10065  61.16
+Fuzzware/zephyr-os/CVE-2020-10066  70.01
+Fuzzware/zephyr-os/CVE-2021-3319   59.29
+Fuzzware/zephyr-os/CVE-2021-3320   48.22
+Fuzzware/zephyr-os/CVE-2021-3321   51.08
+Fuzzware/zephyr-os/CVE-2021-3322   46.78
+Fuzzware/zephyr-os/CVE-2021-3323   41.7
+Fuzzware/zephyr-os/CVE-2021-3329   57.19
+Fuzzware/zephyr-os/CVE-2021-3330   48.54

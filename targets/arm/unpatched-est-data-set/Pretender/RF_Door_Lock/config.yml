@@ -1,0 +1,44 @@
+interrupt:
+  mode: round-robin
+  trigger:
+    on-infinite-sleep: true
+    interval: 1000
+  blocklist:
+    - 28
+
+memory_maps:
+  - name: mmio
+    address: 0x40000000
+    size: 0x20000000
+    type: mmio
+  - name: ITM_DWT_BPU
+    address: 0xe0000000
+    size: 0x3000
+    type: mmio
+  - name: CTI
+    address: 0xe0042000
+    size: 0x1000
+    type: mmio
+  - name: ram
+    address: 0x20000000
+    size: 0x10000
+    type: ram
+  - name: text
+    address: 0x0
+    size: 0x9000
+    file:
+      path: Pretender.max32_rf_door_lock.bin
+      length: 0x9000
+    type: rom
+  - name: rodata
+    address: 0x9000
+    size: 0x2000
+    permission:
+      executable: false
+    file:
+      path: Pretender.max32_rf_door_lock.bin
+      seek: 0x9000
+    type: rom
+
+symbols:
+  - Pretender.max32_rf_door_lock.elf

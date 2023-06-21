@@ -1,0 +1,7 @@
+pub fn main(api) {
+    api.on_interrupt(None, Some(3), |pc, _| trace::basic_block(pc, None));
+    api.on_interrupt(None, Some(4), |pc, _| trace::basic_block(pc, None));
+    api.on_interrupt(None, Some(5), |pc, _| trace::basic_block(pc, None));
+    api.on_interrupt(None, Some(6), |pc, _| trace::basic_block(pc, None));
+    api.on_rom_write(None, None, |pc, _, _, _| trace::basic_block(pc, None));
+}

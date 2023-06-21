@@ -1,0 +1,16 @@
+*/results/fuzzing-runs/fuzzware/*
+*/results/fuzzing-runs/*/*-hoedur/*.log
+*/results/fuzzing-runs/*/*-hoedur/*.corpus.tar.zst
+*/results/fuzzing-runs/*/*-hoedur/*.report.bin.zst
+*/results/fuzzing-runs/*/*-hoedur-group/*.report.bin.zst
+*/results/bug-discovery-timings/*
+*/results/coverage/charts/*
+*/results/coverage/details/*
+*/results/coverage/summary/*
+*/results/coverage/plots.json
+02-coverage-est-data-set/binary-patching/patched-binaries/
+04-prev-unknown-vulns/rebuilt/*
+04-prev-unknown-vulns/building/*/repo
+04-prev-unknown-vulns/building/*/cache
+
+__pycache__

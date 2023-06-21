@@ -1,0 +1,17 @@
+unconstrained_alloca_code_cave_ret:
+  description: "Patch delay function to plain return"
+  address: 0x83934
+  binfile_offset: 0x3934
+  patch_contents: "7047"
+
+unconstrained_alloca_code_cave_contents:
+  description: "Repeat overwritten instructions (ADD R7, SP, #0; MOV R6, string;) and mask size with 0xff, then jump back"
+  address: 0x83936
+  binfile_offset: 0x3936
+  patch_contents: "00AF064601f0ff0100f088bc"
+
+unconstrained_alloca_trampoline:
+  description: "Trampoline to patch region (delay function + 2) and move conditional branch after trampoline (we are performing the other instructions in the code cave"
+  address: 0x8424E
+  binfile_offset: 0x424E
+  patch_contents: "fff772bb0129"

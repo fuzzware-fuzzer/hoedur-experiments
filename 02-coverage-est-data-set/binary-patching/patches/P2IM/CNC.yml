@@ -1,0 +1,10 @@
+oob_stack_sub:
+  description: "Increase the stack size from 0x20 to 0x120 to prevent a buffer overflow"
+  address: 0x80038bc
+  binfile_offset: 0x38bc
+  patch_contents: "c8"
+oob_stack_add:
+  description: "Adjust the stack afterwards"
+  address: 0x80039fc
+  binfile_offset: 0x39fc
+  patch_contents: "bd4648b0"

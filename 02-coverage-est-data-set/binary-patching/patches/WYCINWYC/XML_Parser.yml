@@ -1,0 +1,29 @@
+len_based_bug_trigger_1_stack_based_bof:
+  description: "Do not trigger bug case by making branch unconditional"
+  address: 0x800B681
+  binfile_offset: 0xB681
+  patch_contents: "e0"
+
+len_based_bug_trigger_2_null_pointer_dereference:
+  description: "Do not trigger bug case by NOP'ing triggering branch instruction"
+  address: 0x800B69A
+  binfile_offset: 0xB69A
+  patch_contents: "00bf"
+
+len_based_bug_trigger_3_heap_based_bof:
+  description: "Do not trigger bug case by making branch unconditional"
+  address: 0x800B6A3
+  binfile_offset: 0xB6A3
+  patch_contents: "e0"
+
+len_based_bug_trigger_4_format_string:
+  description: "Do not trigger bug case by making branch unconditional"
+  address: 0x800B6CB
+  binfile_offset: 0xB6CB
+  patch_contents: "e0"
+
+len_based_bug_trigger_5_double_free:
+  description: "Do not trigger bug case by making branch unconditional"
+  address: 0x800B559
+  binfile_offset: 0xB559
+  patch_contents: "e0"

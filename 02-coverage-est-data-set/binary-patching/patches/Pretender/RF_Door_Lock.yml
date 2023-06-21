@@ -1,0 +1,35 @@
+stackbuf_length_check:
+  description: "Change the newline-based exit condition to an index-based bounds restriction"
+  address: 0x426
+  binfile_offset: 0x426
+  patch_contents: "062c"
+
+infinite_recursion_serial_init_error:
+  description: "In mbed_assert_internal, NOP out the call to mbed_error_printf"
+  address: 0x189C
+  binfile_offset: 0x189C
+  patch_contents: "00bf00bf"
+
+read_code_buffer_check_function_prologue:
+  description: "Save r7 on the stack and set r7 to constant instead of r3"
+  address: 0x000003B0
+  binfile_offset: 0x000003B0
+  patch_contents: "f0b5dd27"
+
+read_code_buffer_check_constant_byte_write:
+  description: "Write value in r7 instead of r3"
+  address: 0x000003Bb
+  binfile_offset: 0x000003Bb
+  patch_contents: "70"
+
+read_code_buffer_loop_condition:
+  description: "Subtract ceil(0xdd/6)=36 and check for positivity to create loop bounds"
+  address: 0x000003DA
+  binfile_offset: 0x000003DA
+  patch_contents: "243ff2d5"
+
+read_code_buffer_check_function_epilogue:
+  description: "Restore r7"
+  address: 0x00000402
+  binfile_offset: 0x00000402
+  patch_contents: "f0"

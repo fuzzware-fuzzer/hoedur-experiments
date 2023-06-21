@@ -1,0 +1,40 @@
+oob_fc1_1:
+  description: "Jump to code cave for out of bounds in FC1"
+  address: 0x08000952
+  binfile_offset: 0x952
+  patch_contents: "04f075be"
+oob_fc1_2:
+  description: "Fix for out of bounds in FC1"
+  address: 0x0800563e
+  binfile_offset: 0x563e
+  patch_contents: "70473e2b01da84f84930fbf785b9"
+oob_fc3_1:
+  description: "Jump to code cave for out of bounds in FC3"
+  address: 0x080009c4
+  binfile_offset: 0x9c4
+  patch_contents: "04f042be"
+oob_fc3_2:
+  description: "Fix for out of bounds in FC3"
+  address: 0x0800564c
+  binfile_offset: 0x564c
+  patch_contents: "3d2b01da84f84930fbf7b8b9"
+oob_fc3_3:
+  description: "Remove first store"
+  address: 0x080009b6
+  binfile_offset: 0x9b6
+  patch_contents: "00bf00bf"
+oob_fc15:
+  description: "Fix for out of bounds in FC15"
+  address: 0x08000a9c
+  binfile_offset: 0xa9c
+  patch_contents: "03"
+oob_fc16_1:
+  description: "Jump to code cave for out of bounds in FC16"
+  address: 0x08000b16
+  binfile_offset: 0xb16
+  patch_contents: "04f09fbd641c"
+oob_fc16_2:
+  description: "Fix for out of bounds in FC16"
+  address: 0x0805658
+  binfile_offset: 0x5658
+  patch_contents: "082b01da28f81300fbf75bba"

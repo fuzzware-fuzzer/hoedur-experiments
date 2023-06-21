@@ -1,0 +1,45 @@
+test-run:
+  01-bug-finding-ability:
+    # experiment repetition
+    runs: 3
+    # cores per experiment run (default: 1)
+    cores_per_run: 2
+    # experiment duration
+    duration: "1h"
+  02-coverage-est-data-set:
+    runs: 3
+    duration: "1h"
+  03-advanced-mutations:
+    runs: 3
+    duration: "1h"
+  04-prev-unknown-vulns:
+    runs: 3
+    duration: "1h"
+shortened-eval:
+  01-bug-finding-ability:
+    runs: 3
+    cores_per_run: 4
+    duration: "1d"
+  02-coverage-est-data-set:
+    runs: 3
+    duration: "1d"
+  03-advanced-mutations:
+    runs: 3
+    duration: "1d"
+  04-prev-unknown-vulns:
+    runs: 3
+    duration: "1d"
+full-eval:
+  01-bug-finding-ability:
+    runs: 5
+    cores_per_run: 4
+    duration: "15d"
+  02-coverage-est-data-set:
+    runs: 10
+    duration: "1d"
+  03-advanced-mutations:
+    runs: 10
+    duration: "1d"
+  04-prev-unknown-vulns:
+    runs: 52
+    duration: "1d"

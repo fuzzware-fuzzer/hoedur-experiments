@@ -1,0 +1,20 @@
+diff --git a/dockerfile b/dockerfile
+index 687f29f..e2fcf81 100644
+--- a/dockerfile
++++ b/dockerfile
+@@ -12,6 +12,7 @@ run mkdir /home/user && chown -R user:user /home/user && echo "user ALL=(ALL) NO
+ # 1. Base Python requirements
+ ENV WORKON_HOME=/home/user/.virtualenvs
+ ENV FUZZWARE=/home/user/fuzzware
++copy requirements-fuzzware-eval-docker.txt /requirements-fuzzware-eval-docker.txt
+ copy pipeline/requirements.txt /requirements-pipeline.txt
+ copy emulator/requirements.txt /requirements-emulator.txt
+ copy modeling/requirements.txt /requirements-modeling.txt
+@@ -19,6 +20,7 @@ user user
+ run python3 -m virtualenv --python=/usr/bin/python3 $WORKON_HOME/fuzzware-modeling
+ run . $WORKON_HOME/fuzzware-modeling/bin/activate && pip install -r /requirements-modeling.txt
+ user root
++run pip3 install -r /requirements-fuzzware-eval-docker.txt
+ run pip3 install -r /requirements-pipeline.txt
+ run pip3 install -r /requirements-emulator.txt
+ 

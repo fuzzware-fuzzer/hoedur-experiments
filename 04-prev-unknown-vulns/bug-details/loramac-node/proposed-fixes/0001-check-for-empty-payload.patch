@@ -1,0 +1,31 @@
+From 388c2dfbe69d232ed33bb5e50f8dd3e04d5b6007 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Simon=20W=C3=B6rner?= <git@simon-woerner.de>
+Date: Fri, 30 Sep 2022 15:27:39 +0200
+Subject: [PATCH] check for empty payload
+
+---
+ src/mac/LoRaMac.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/src/mac/LoRaMac.c b/src/mac/LoRaMac.c
+index 0193f0de..7d330f39 100644
+--- a/src/mac/LoRaMac.c
++++ b/src/mac/LoRaMac.c
+@@ -891,6 +891,13 @@ static void ProcessRadioRxDone( void )
+         }
+     }
+ 
++    // Abort on empty radio frames
++    if (size == 0) {
++        MacCtx.McpsIndication.Status = LORAMAC_EVENT_INFO_STATUS_ERROR;
++        PrepareRxDoneAbort( );
++        return;
++    }
++
+     macHdr.Value = payload[pktHeaderLen++];
+ 
+     switch( macHdr.Bits.MType )
+-- 
+2.37.3
+
+

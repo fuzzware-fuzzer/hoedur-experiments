@@ -1,0 +1,40 @@
+From 67c93f61c7d7e321c4fb4f1768c5d08bc8a1ee5e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Simon=20W=C3=B6rner?= <git@simon-woerner.de>
+Date: Sat, 8 Oct 2022 21:31:53 +0200
+Subject: [PATCH 2/2] verify path_len
+
+---
+ os/net/routing/rpl-lite/rpl-ext-header.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/os/net/routing/rpl-lite/rpl-ext-header.c b/os/net/routing/rpl-lite/rpl-ext-header.c
+index 665779541..bf262ed3d 100644
+--- a/os/net/routing/rpl-lite/rpl-ext-header.c
++++ b/os/net/routing/rpl-lite/rpl-ext-header.c
+@@ -95,7 +95,7 @@ rpl_ext_header_srh_update(void)
+   uint8_t cmpri, cmpre;
+   uint8_t ext_len;
+   uint8_t padding;
+-  uint8_t path_len;
++  int32_t path_len;
+   uint8_t segments_left;
+   uip_ipaddr_t current_dest_addr;
+ 
+@@ -114,8 +114,12 @@ rpl_ext_header_srh_update(void)
+   cmpri = srh_header->cmpr >> 4;
+   cmpre = srh_header->cmpr & 0x0f;
+   padding = srh_header->pad >> 4;
+-  path_len = ((ext_len - padding - RPL_RH_LEN - RPL_SRH_LEN - (16 - cmpre)) / (16 - cmpri)) + 1;
+-  (void)path_len;
++  path_len = (((int32_t)ext_len - padding - RPL_RH_LEN - RPL_SRH_LEN - (16 - cmpre)) / (16 - cmpri)) + 1;
++
++  if (path_len < 0 || path_len > 0xff) {
++    LOG_ERR("SRH with invalid path length (%i)\n", path_len);
++    return 0;
++  }
+ 
+   LOG_INFO("read SRH, path len %u, segments left %u, Cmpri %u, Cmpre %u, ext len %u (padding %u)\n",
+       path_len, segments_left, cmpri, cmpre, ext_len, padding);
+-- 
+2.37.3
+

@@ -1,0 +1,5 @@
+stackbuf_length_check:
+  description: "Change the newline-based exit condition to an index-based bounds restriction"
+  address: 0x3CA
+  binfile_offset: 0x3CA
+  patch_contents: "072c"
