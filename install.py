@@ -17,15 +17,18 @@ def create_parser():
 
 def import_docker_containers():
     # Verfiy docker images are available
-    PACKED_IMAGE_NAMES = ('fuzzware', 'hoedur-fuzzware', 'hoedur-plotting-env')
-    for docker in PACKED_IMAGE_NAMES:
+    PACKED_IMAGE_NAMES = [
+        ('fuzzware', 'https://pixeldrain.com/api/file/MUTpyGYt?download'),
+        ('hoedur-fuzzware', 'https://pixeldrain.com/api/file/foyFQhSF?download'),
+        ('hoedur-plotting-env', 'https://pixeldrain.com/api/file/4omFNGKx?download'),
+    ]
+    for (docker, download_url) in PACKED_IMAGE_NAMES:
         filename = f'{docker}.docker.tar.zst'
         path = DIR / 'install' / filename
 
         if not path.is_file():
             path.parent.mkdir(parents=True, exist_ok=True)
-            download_url = f"https://raw.githubusercontent.com/fuzzware-fuzzer/hoedur-docker-images/main/{filename}"
-            print(f'[*] Docker image {docker}  is not available in {path}. Downloading from {download_url}...')
+            print(f'[*] Docker image {docker} is not available in {path}. Downloading from {download_url}...')
             try:
                 urlretrieve(download_url, path)
             except ContentTooShortError as e:
