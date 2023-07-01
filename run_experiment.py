@@ -61,7 +61,7 @@ def run_hoedur_docker(cmd_args, max_cores, run_sync=False):
         "--rm",
         "--user", f"{os.getuid()}:{os.getgid()}",
         "--mount", f"src={DIR},target=/home/user/hoedur-experiments,type=bind",
-        "--mount", f"src={DIR}/targets,target=/home/user/hoedur-targets,type=bind",
+        "--mount", f"src={DIR}/targets,target=/hoedur-targets,type=bind",
         "-t",
         "hoedur-fuzzware"
     ]
