@@ -44,6 +44,8 @@ def run_fuzzware_docker(cmd_args, max_cores, run_sync=False):
     docker_cmd_args = [ "docker", "run",
         "--rm", "-it",
         "--user", f"{os.getuid()}:{os.getgid()}",
+        "--env", "HOME=/home/user",
+        "--env", "PYTHON_EGG_CACHE=/tmp/.cache",
         "--mount", "type=bind,source="+str(DIR)+",target=/home/user/fuzzware/targets",
         "--cpus=" + f"{max_cores:d}",
         "fuzzware:fuzzware-hoedur-eval"
@@ -60,6 +62,7 @@ def run_hoedur_docker(cmd_args, max_cores, run_sync=False):
         "run",
         "--rm",
         "--user", f"{os.getuid()}:{os.getgid()}",
+        "--env", "HOME=/home/user",
         "--mount", f"src={DIR},target=/home/user/hoedur-experiments,type=bind",
         "--mount", f"src={DIR}/targets,target=/home/user/hoedur-targets,type=bind",
         "-t",
