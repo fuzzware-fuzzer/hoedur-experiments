@@ -18,9 +18,9 @@ def create_parser():
 def import_docker_containers():
     # Verfiy docker images are available
     PACKED_IMAGE_NAMES = [
-        ('fuzzware', 'https://pixeldrain.com/api/file/MUTpyGYt?download'),
-        ('hoedur-fuzzware', 'https://pixeldrain.com/api/file/foyFQhSF?download'),
-        ('hoedur-plotting-env', 'https://pixeldrain.com/api/file/4omFNGKx?download'),
+        ('fuzzware', 'https://pixeldrain.com/api/file/KthTbreF?download'),
+        ('hoedur-fuzzware', 'https://pixeldrain.com/api/file/55EMUd8t?download'),
+        ('hoedur-plotting-env', 'https://pixeldrain.com/api/file/SstNd4xb?download'),
     ]
     for (docker, download_url) in PACKED_IMAGE_NAMES:
         filename = f'{docker}.docker.tar.zst'
@@ -44,6 +44,8 @@ def import_docker_containers():
 
     # Import docker images
     subprocess.check_call([DIR / "scripts" / "import_docker.sh"])
+
+    print(f"[WARNING] You are using the pre-built docker images, which may have issues on your hardware. Please try to build your own docker images by running `./install.py` if you experience any issues.")
 
 def rebuild_docker_containers():
     # Fuzzware docker container
