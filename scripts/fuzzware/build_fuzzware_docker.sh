@@ -15,4 +15,7 @@ git $GIT_ARGS submodule update --init --recursive
 git $GIT_ARGS apply $DIR/fuzzware-dockerfile.patch
 cp $DIR/requirements-fuzzware-eval-docker.txt $fuzzware_dir
 
+# Compile QEMU without CPU-specific features
+sed -i 's/ -march=native//g' "$fuzzware_dir/emulator/unicorn/fuzzware-unicorn/Makefile"
+
 ( cd $fuzzware_dir && $fuzzware_dir/build_docker.sh fuzzware-hoedur-eval )
