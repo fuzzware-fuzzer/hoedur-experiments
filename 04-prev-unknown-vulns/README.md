@@ -15,7 +15,7 @@ The script [run_reproducer.py](./scripts/run_reproducer.py) can be used to execu
 ./scripts/run_reproducer.py <bug_name>
 ```
 Where `bug_name` is the name of the reproducer in the table [Bug Overview](#bug-overview), e.g., `CVE-2023-31129`.
-Additional options are `--results` to pass a custom `bug-reproducers` directory and `--targets` to pass a custom `targets` directory.
+Additional options are `--results` to pass a custom `bug-reproducers` directory, `--targets` to pass a custom `targets` directory, and `--trace` to show additional execution trace information.
 E.g., to execute an input from experiment [01-bug-finding-ability](../01-bug-finding-ability) run:
 ```
 ./scripts/run_reproducer.py --results ../01-bug-finding-ability/results/bug-reproducers <bug_name>
