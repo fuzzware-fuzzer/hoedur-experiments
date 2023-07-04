@@ -243,6 +243,10 @@ def try_upload(run_config):
             exit(1)
 
     for hostname, _ in run_config.items():
+        if hostname == "localhost":
+            continue
+
+        print(f"[*] Uploading run configuration to {hostname}")
         upload_config(hostname)
 
 def main():
