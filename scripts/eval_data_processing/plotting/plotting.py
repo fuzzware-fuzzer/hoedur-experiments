@@ -220,13 +220,14 @@ class AltairPlotBackend():
     @staticmethod
     def _calculate_intervals(data: pd.DataFrame, interval_width: float=0.66) -> DataFrame:
         y_vals_grouped_by_min = data.groupby('min')['y'].apply(list)
+        # This will be 0 if there are not enough datapoints
         interval_elm_cnt =  math.floor(math.floor(len(y_vals_grouped_by_min[0]) * interval_width) / 2)
 
         interval_frame = defaultdict(list)
         index = []
+        # This will create an interval with upper bound == lower bound if interval_elm_cnt is zero
         for min, y_vals in y_vals_grouped_by_min.items():
             elm_cnt = len(y_vals)
-            assert elm_cnt > 2
             y_vals = sorted(y_vals)
             median_idx = elm_cnt // 2
             lower_bound: Any = y_vals[median_idx-interval_elm_cnt]
