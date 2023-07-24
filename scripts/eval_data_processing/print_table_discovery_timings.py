@@ -23,6 +23,27 @@ assert isinstance(EXPERIMENT["path"], Path), \
         f"Expected EXPERIMENTS['01-bug-finding-ability']['path'] to be a Path, found {type(EXPERIMENT['path'])}"
 TABLE_ONE_PATH = EXPERIMENT["path"] / "results" / "table_1_cve_discovery_timings.tex"
 TABLE_TWO_PATH = EXPERIMENT["path"] / "results" / "table_2_add_bugs_discovery_timings.tex"
+TEX_HEADER = '\n'.join([
+    r'\documentclass{article}',
+    r'\usepackage{graphicx} % Required for inserting images',
+    r'\usepackage{booktabs}',
+    r'\usepackage{multirow}',
+    r'\usepackage{multicol}',
+    r'\usepackage{xcolor}',
+    r'\usepackage{colortbl}',
+    r'\usepackage{xspace}',
+    r'',
+    r'',
+    r'\newcommand{\tabref}[1]{Table~\ref{#1}}',
+    r'',
+    r'\newcommand{\hoedur}{\textsc{Hoedur}\xspace}',
+    r'\newcommand{\fuzzware}{\textsc{Fuzzware}\xspace}',
+    r'\newcommand{\fw}{\textsc{Fuzzware}\xspace}',
+    r'\newcommand{\shoedur}{\textsc{Single-Stream-Hoedur}\xspace}',
+    r'',
+    r'\begin{document}'
+])
+TEX_FOOTER = '\n' + r'\end{document}'
 
 
 def load_data(fuzzer: str, target: str, bug: str) -> Tuple[List[Optional[int]], List[int]]:
@@ -302,7 +323,9 @@ def generate_table_one(timings_data: Dict[str, Dict[str, Dict[str, List[str]]]])
 
     # write table
     with open(TABLE_ONE_PATH, "w", encoding="utf-8") as f:
+        f.write(TEX_HEADER)
         f.write(table)
+        f.write(TEX_FOOTER)
 
     # print some stats on how many runs hit the targets within 24h/full runtime
     found_in_one_day(timings)
@@ -339,7 +362,9 @@ def generate_table_two(timings_data: Dict[str, Dict[str, Dict[str, List[str]]]])
     table = f"{header}\n{body}\n{footer}"
 
     with open(TABLE_TWO_PATH, "w", encoding="utf-8") as f:
+        f.write(TEX_HEADER)
         f.write(table)
+        f.write(TEX_FOOTER)
 
     # print some stats on how many runs hit the targets within 24h/full runtime
     found_in_one_day(timings)
