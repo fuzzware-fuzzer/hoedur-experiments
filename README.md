@@ -5,7 +5,7 @@ This repository contains all data required to reproduce our target binaries and 
 The repository contains scripts and data to do the following:
 
 1. Rerun all of our experiments with configurable CPU requirements.
-2. Rebuild our new firmware target binaries and apply binary patches for the [established data set](02-coverage-est-data-set/binary-patching).-
+2. Rebuild our new firmware target binaries and apply binary patches for the [established data set](02-coverage-est-data-set/binary-patching).
 3. Reproduce our auto-conversion of configurations and bug detection hooks between Hoedur and Fuzzware.
 
 # Repository Structure
@@ -142,7 +142,7 @@ mv targets/arm/my-new-targets/WYCINWYC/config.yml targets/arm/my-new-targets/WYC
 ./scripts/run_in_docker.sh hoedur-convert-fuzzware-config targets/arm/my-new-targets/WYCINWYC/config_fuzzware.yml targets/arm/my-new-targets/WYCINWYC/config.yml
 ```
 
-You can now find a the generated Hoedur configuration file in `targets/arm/my-new-targets/WYCINWYC/config.yml`. You can now fuzz test this target as seen before. Here the command-line is be the following:
+You can now find a the generated Hoedur configuration file in `targets/arm/my-new-targets/WYCINWYC/config.yml`. You can now fuzz test this target as seen before. Here the command-line is the following:
 
 ```sh
 scripts/run_in_docker.sh /home/user/hoedur/scripts/fuzz-local.py --runs 2 --duration 2m --log --name 'my-newly-configured-target' --targets my-new-targets/WYCINWYC
