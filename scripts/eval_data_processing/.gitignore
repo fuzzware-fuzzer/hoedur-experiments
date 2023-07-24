@@ -1,3 +1,6 @@
 charts/*.svg
 charts/*.png
 charts/*.pdf
+/*.aux
+/*.pdf
+/*.log

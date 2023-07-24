@@ -23,3 +23,4 @@ subprocess.run([DIR.joinpath("01-bug-finding-ability", "scripts", "summarize_bug
 subprocess.run(["make", "-C", DIR.joinpath("scripts", "eval_data_processing")])
 # 3. Generate bug discovery timings LaTex tables
 subprocess.run([DIR.joinpath("scripts", "eval_data_processing", "print_table_discovery_timings.py")])
+subprocess.run([DIR.joinpath("scripts", "eval_data_processing", "print_table_discovery_timings_pdf.sh")])
