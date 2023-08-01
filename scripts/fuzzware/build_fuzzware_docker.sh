@@ -9,7 +9,7 @@ GIT_ARGS="-C $fuzzware_dir"
 mkdir -p $install_dir
 rm -rf $fuzzware_dir
 git clone https://github.com/fuzzware-fuzzer/fuzzware $fuzzware_dir
-git $GIT_ARGS checkout 898ba4369623032952ddb817f4ad52850c4b8d80
+git $GIT_ARGS checkout 2bb5004ef3f0c199920f314a37289261f085701a
 git $GIT_ARGS submodule update --init --recursive
 
 git $GIT_ARGS apply $DIR/fuzzware-dockerfile.patch
