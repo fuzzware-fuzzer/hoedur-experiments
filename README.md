@@ -27,12 +27,10 @@ The repository contains scripts and data to do the following:
 We designed our scripts to require `python3`, `sudo`, `rsync`, `make`, and `docker`. Make sure that these are installed on your system and available to your user. Then run:
 
 ```sh
-# Install (to use pre-built docker containers, use ./install.py --prebuilt)
+# Install
 ./install.py
 # Set up host for related work Fuzzware reproduction
 sudo ./scripts/fuzzware/set_limits_and_prepare_afl.sh
-# Check that basic functionality is working
-./scripts/check_install.py
 ```
 
 And to kick off a test version of the experiments, run

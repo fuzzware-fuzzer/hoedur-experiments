@@ -47,6 +47,10 @@ The following values are pre-defined in [profiles.yml](./profiles.yml):
 
 For the `shortened-eval`, we opted to increase the runtimes for the two specific targets `CVE-2020-12140` and `CVE-2021-3329` relative to the other targets of the experiment. The reason is that these are the target in which hoedur found additional, previously-unknown bugs, some of which take more time to trigger (see Table 2 in the paper).
 
+## Fine-tuning the Experiment Targets
+
+In case you would like to perform more fine-tuning of the experiment (for example, remove specific targets, remove a fuzzer type, or change plotting settings), please refer to [config.py](./../scripts/eval_data_processing/config.py).
+
 # Configuring available Hosts
 
 The available hosts on which the experiments are run can be configured by editing the [available_hosts.txt](available_hosts.txt) file. The file format is the following:
@@ -60,9 +64,34 @@ The available hosts on which the experiments are run can be configured by editin
 
 The `localhost` name is a special entry which expresses that the experiment is to be run locally and that no syncing of experiment data from a remote host is required for that entry.
 
-Example:
+## Example 1: Run Experiments Fully Locally
+
+In case you have access to a host which is able to perform the full experiment that you would like to run, the config for a single 70-core machine would look like the following:
+
 ```
-localhost 32
-my_host_1 16
-my_host_2 40
+localhost 70
 ```
+
+## Example 2: Two Servers, aggregate Fuzzing Host
+
+In case you have access to two servers, `my-host-1` and `my-host-2`, with 50 cores each and you would like to aggregate all data on `my-host-1`, you would use the following config:
+
+```
+localhost 50
+my-host-2
+```
+
+As here `my-host-1` is the aggregating server, it is easiest to generate the configuration on `my-host-1` and to run the upload and data syncing scripts from `my-host-1`, too.
+
+## Example 3: Two Servers, Aggregate on Local Machine
+
+In the other case where the two 50-core servers `my-host-1` and `my-host-2` should be used for running the experiments, but a third local machine `my-aggregating-host` should be used to aggregate and postprocess the results, then use the following configuration:
+
+```
+my-host-1
+my-host-2
+```
+
+Note that in this case, no `localhost` entry is required as the aggregating host itself does not run any fuzzing experiments.
+
+As here a third host (`my-aggregating-host`) is the aggregating server, it is easiest to generate the configuration on `my-aggregating-host` and to run the upload and data syncing scripts from `my-aggregating-host`, too.

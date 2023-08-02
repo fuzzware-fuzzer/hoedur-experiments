@@ -182,7 +182,7 @@ EXPERIMENTS = {
             'uEmu/Zepyhr_SocketCan',
             'WYCINWYC/XML_Parser',
         ],
-        # selected targets for ablation stutdy (paper / appendix filter)
+        # selected targets for ablation study (paper / appendix filter)
         'include_in_paper': [
             'HALucinator/6LoWPAN_Receiver',
             'P2IM/CNC',
