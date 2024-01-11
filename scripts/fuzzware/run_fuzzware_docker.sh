@@ -13,5 +13,5 @@ docker run \
     --env "HOME=/home/user" \
     --env "PYTHON_EGG_CACHE=/tmp/.cache" \
     "$docker_options" \
-    --mount type=bind,source="$(realpath $experiments_rootdir)",target=/home/user/fuzzware/targets \
-    "fuzzware:fuzzware-hoedur-eval" $@
+    --mount type=bind,source="$(realpath "$experiments_rootdir")",target=/home/user/fuzzware/targets \
+    "fuzzware:fuzzware-hoedur-eval" "$@"
